@@ -353,7 +353,86 @@ mysql> select*from departments;
 +---------+------------------+-------------+
 5 rows in set (0.00 sec)
 
+mysql> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| employee_id | int(11)     | NO   | PRI | NULL    |       |
+| first_name  | varchar(20) | YES  |     | NULL    |       |
+| last_name   | varchar(20) | YES  |     | NULL    |       |
+| email       | varchar(20) | YES  |     | NULL    |       |
+| phone       | bigint(10)  | YES  |     | NULL    |       |
+| hire_date   | date        | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  | MUL | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| manager_id  | int(11)     | YES  |     | NULL    |       |
+| dept_id     | int(11)     | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
 
+
+mysql> desc jobs;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int(11)     | NO   | PRI | NULL    |       |
+| job_title  | varchar(50) | YES  |     | NULL    |       |
+| min_salary | int(11)     | YES  |     | NULL    |       |
+| max_salary | int(11)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from jobs;
+Empty set (0.00 sec)
+
+
+mysql> select * from jobs;
++--------+--------------------+------------+------------+
+| job_id | job_title          | min_salary | max_salary |
++--------+--------------------+------------+------------+
+|    101 | HR                 |      15000 |      30000 |
+|    102 | devoloper          |       5000 |      20000 |
+|    103 | software-devoloper |      15000 |      40000 |
+|    104 | designer           |      10000 |      15000 |
+|    105 | tester             |       6000 |      18000 |
+|    106 | manager            |      15000 |      60000 |
++--------+--------------------+------------+------------+
+6 rows in set (0.02 sec)
+
+mysql> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| employee_id | int(11)     | NO   | PRI | NULL    |       |
+| first_name  | varchar(20) | YES  |     | NULL    |       |
+| last_name   | varchar(20) | YES  |     | NULL    |       |
+| email       | varchar(20) | YES  |     | NULL    |       |
+| phone       | bigint(10)  | YES  |     | NULL    |       |
+| hire_date   | date        | YES  |     | NULL    |       |
+| job_id      | int(11)     | YES  | MUL | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| manager_id  | int(11)     | YES  |     | NULL    |       |
+| dept_id     | int(11)     | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> insert into employee values(1,"abhinav","k","ab@gmial.com",8912345423,"2022-03-05","106","50000",default,1),(2,"abhi","k","abk@gmial.com",8912666423,"2022-03-05","101","20000",1,1),(3,"manu","m","manu@gmial.com",8912333323,"2022-03-05","102","30000",1,2),(4,"nithya","s","nithya@gmial.com",8912498423,"2022-04-05","106","50000",default,5),(5,"peter","parker","pp@gmial.com",8912346783,"2022-05-06","104","12000",4,2);
+Query OK, 5 rows affected (0.15 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from employee;
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+| employee_id | first_name | last_name | email            | phone      | hire_date  | job_id | salary | manager_id | dept_id |
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+|           1 | abhinav    | k         | ab@gmial.com     | 8912345423 | 2022-03-05 |    106 |  50000 |       NULL |       1 |
+|           2 | abhi       | k         | abk@gmial.com    | 8912666423 | 2022-03-05 |    101 |  20000 |          1 |       1 |
+|           3 | manu       | m         | manu@gmial.com   | 8912333323 | 2022-03-05 |    102 |  30000 |          1 |       2 |
+|           4 | nithya     | s         | nithya@gmial.com | 8912498423 | 2022-04-05 |    106 |  50000 |       NULL |       5 |
+|           5 | peter      | parker    | pp@gmial.com     | 8912346783 | 2022-05-06 |    104 |  12000 |          4 |       2 |
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> 
 
 
 
