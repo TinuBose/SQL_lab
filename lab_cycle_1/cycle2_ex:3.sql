@@ -434,5 +434,42 @@ mysql> select*from employee;
 
 mysql> 
 
+mysql> insert into dependants values(301,"sabeena","H","mother",1);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into dependants values(302,"Suma","M B","mother",600);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into dependants values(303,"Babu","P C","father",600);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from dependants;
++--------------+------------+-----------+--------------+--------+
+| dependent_id | first_name | last_name | relationship | emp_id |
++--------------+------------+-----------+--------------+--------+
+|          301 | sabeena    | H         | mother       |      1 |
+|          302 | Suma       | M B       | mother       |    600 |
+|          303 | Babu       | P C       | father       |    600 |
++--------------+------------+-----------+--------------+--------+
+3 rows in set (0.00 sec)
+
+  mysql> insert into dependants values(301,"sabeena","H","mother",1);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into dependants values(302,"Suma","M B","mother",600);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into dependants values(303,"Babu","P C","father",600);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from dependants;
++--------------+------------+-----------+--------------+--------+
+| dependent_id | first_name | last_name | relationship | emp_id |
++--------------+------------+-----------+--------------+--------+
+|          301 | sabeena    | H         | mother       |      1 |
+|          302 | Suma       | M B       | mother       |    600 |
+|          303 | Babu       | P C       | father       |    600 |
++--------------+------------+-----------+--------------+--------+
+3 rows in set (0.00 sec)
 
 
