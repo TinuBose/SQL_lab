@@ -136,7 +136,223 @@ mysql> desc dependents;
 +--------------+-------------+------+-----+---------+-------+
 5 rows in set (0.02 sec)
 
+
 mysql> 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| BANK               |
+| College            |
+| LIBRARY            |
+| STAFF              |
+| TRANSACTION        |
+| airline            |
+| airlinee           |
+| application        |
+| bank               |
+| college            |
+| college_1          |
+| company            |
+| db                 |
+| flight_system      |
+| job                |
+| library            |
+| library1           |
+| my_company         |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sherin             |
+| sys                |
+| test               |
+| transaction        |
++--------------------+
+26 rows in set (0.42 sec)
+
+mysql> use job;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_job |
++---------------+
+| countries     |
+| departments   |
+| dependents    |
+| employee      |
+| jobs          |
+| locations     |
+| region        |
++---------------+
+7 rows in set (0.00 sec)
+
+mysql> select*from countries;
+Empty set (0.03 sec)
+
+mysql> select*from departments;
+Empty set (0.03 sec)
+
+mysql> select*from region;
+Empty set (0.02 sec)
+
+mysql> select*from location;
+ERROR 1146 (42S02): Table 'job.location' doesn't exist
+mysql> select*from locations;
+Empty set (0.01 sec)
+
+mysql> select*from jobs;
+Empty set (0.00 sec)
+
+mysql> 
+
+
+mysql> show tables;
++---------------+
+| Tables_in_job |
++---------------+
+| countries     |
+| departments   |
+| dependents    |
+| employee      |
+| jobs          |
+| locations     |
+| region        |
++---------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into region values(701,"Asia"),(702,"Europe"),(703,"Australia");
+Query OK, 3 rows affected (0.25 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+mysql> select*from region;
++-----------+-------------+
+| region_id | region_name |
++-----------+-------------+
+|       701 | Asia        |
+|       702 | Europe      |
+|       703 | Australia   |
++-----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> desc countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int(11)     | NO   | PRI | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int(11)     | YES  | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.06 sec)
+
+
+mysql> insert into countries values(601,"sydney",703),(602,"melbourne",703),(603,"india",701);
+Query OK, 3 rows affected (0.07 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from countries;
++------------+--------------+-----------+
+| country_id | country_name | region_id |
++------------+--------------+-----------+
+|        601 | sydney       |       703 |
+|        602 | melbourne    |       703 |
+|        603 | india        |       701 |
++------------+--------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> desc departments;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| dept_id     | int(11)     | NO   | PRI | NULL    |       |
+| dept_name   | varchar(20) | YES  |     | NULL    |       |
+| location_id | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc locations;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| location_id    | int(11)     | NO   | PRI | NULL    |       |
+| street_address | varchar(50) | YES  |     | NULL    |       |
+| postal_code    | int(11)     | YES  |     | NULL    |       |
+| city           | varchar(30) | YES  |     | NULL    |       |
+| state_province | varchar(20) | YES  |     | NULL    |       |
+| country_id     | int(11)     | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+
+mysql> insert into locations values(1700,"chengannur",690155,"alappuzha","india",603),(1701,"mattancherry",680121,"eranakulam","india",603),(1702,"munnar",690158,"idukki","india",603);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from locations;
++-------------+----------------+-------------+------------+----------------+------------+
+| location_id | street_address | postal_code | city       | state_province | country_id |
++-------------+----------------+-------------+------------+----------------+------------+
+|        1700 | chengannur     |      690155 | alappuzha  | india          |        603 |
+|        1701 | mattancherry   |      680121 | eranakulam | india          |        603 |
+|        1702 | munnar         |      690158 | idukki     | india          |        603 |
++-------------+----------------+-------------+------------+----------------+------------+
+3 rows in set (0.00 sec)
+
+
+mysql> desc departments;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| dept_id     | int(11)     | NO   | PRI | NULL    |       |
+| dept_name   | varchar(20) | YES  |     | NULL    |       |
+| location_id | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into locations values("1703","saroji nagar",678940,"delhi","india",603);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select*from locations;
++-------------+----------------+-------------+------------+----------------+------------+
+| location_id | street_address | postal_code | city       | state_province | country_id |
++-------------+----------------+-------------+------------+----------------+------------+
+|        1700 | chengannur     |      690155 | alappuzha  | india          |        603 |
+|        1701 | mattancherry   |      680121 | eranakulam | india          |        603 |
+|        1702 | munnar         |      690158 | idukki     | india          |        603 |
+|        1703 | saroji nagar   |      678940 | delhi      | india          |        603 |
++-------------+----------------+-------------+------------+----------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> desc departments;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| dept_id     | int(11)     | NO   | PRI | NULL    |       |
+| dept_name   | varchar(20) | YES  |     | NULL    |       |
+| location_id | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into departments values(1,"computer science",1700),(2,"electronics",1701),(3,"electronics",1702),(4,"bio technology",1702),(5,"finance",1703);
+Query OK, 5 rows affected (0.07 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from departments;
++---------+------------------+-------------+
+| dept_id | dept_name        | location_id |
++---------+------------------+-------------+
+|       1 | computer science |        1700 |
+|       2 | electronics      |        1701 |
+|       3 | electronics      |        1702 |
+|       4 | bio technology   |        1702 |
+|       5 | finance          |        1703 |
++---------+------------------+-------------+
+5 rows in set (0.00 sec)
+
 
 
 
