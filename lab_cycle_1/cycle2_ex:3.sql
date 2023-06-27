@@ -508,6 +508,18 @@ mysql> select * from dependants;
 |            35333.33333333 |
 +---------------------------+
 
+10)  mysql> select employee_id,salary,(salary - (select avg (salary) from employee)) as salary_difference,(select avg(salary) from employee)as average_salary from employee;
++-------------+--------+-------------------+----------------+
+| employee_id | salary | salary_difference | average_salary |
++-------------+--------+-------------------+----------------+
+|           1 |  50000 |        17600.0000 |     32400.0000 |
+|           2 |  20000 |       -12400.0000 |     32400.0000 |
+|           3 |  30000 |        -2400.0000 |     32400.0000 |
+|           4 |  50000 |        17600.0000 |     32400.0000 |
+|           5 |  12000 |       -20400.0000 |     32400.0000 |
++-------------+--------+-------------------+----------------+
+
+
 
 
 
