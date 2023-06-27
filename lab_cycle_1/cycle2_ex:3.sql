@@ -530,6 +530,17 @@ mysql> select * from dependants;
 |           5 | peter      | parker    | pp@gmial.com     | 8912346783 | 2022-05-06 |    104 |  12000 |          4 |       2 |
 +-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
 
+13)  select employee.first_name,employee.last_name,departments.dept_name from employee join departments on employee.dept_id=departments.dept_id where departments.dept_id in(1,2,3);
++------------+-----------+------------------+
+| first_name | last_name | dept_name        |
++------------+-----------+------------------+
+| abhinav    | k         | computer science |
+| abhi       | k         | computer science |
+| manu       | m         | electronics      |
+| peter      | parker    | electronics      |
++------------+-----------+------------------+
+
+
 
 
 
