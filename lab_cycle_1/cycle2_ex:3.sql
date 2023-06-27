@@ -519,6 +519,17 @@ mysql> select * from dependants;
 |           5 |  12000 |       -20400.0000 |     32400.0000 |
 +-------------+--------+-------------------+----------------+
 
+12)   select employee.*from employee left join dependents on employee.employee_id=dependents.employee_id=dependents.employee_id where dependents.employee_id is null;
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+| employee_id | first_name | last_name | email            | phone      | hire_date  | job_id | salary | manager_id | dept_id |
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+|           1 | abhinav    | k         | ab@gmial.com     | 8912345423 | 2022-03-05 |    106 |  50000 |       NULL |       1 |
+|           2 | abhi       | k         | abk@gmial.com    | 8912666423 | 2022-03-05 |    101 |  20000 |          1 |       1 |
+|           3 | manu       | m         | manu@gmial.com   | 8912333323 | 2022-03-05 |    102 |  30000 |          1 |       2 |
+|           4 | nithya     | s         | nithya@gmial.com | 8912498423 | 2022-04-05 |    106 |  50000 |       NULL |       5 |
+|           5 | peter      | parker    | pp@gmial.com     | 8912346783 | 2022-05-06 |    104 |  12000 |          4 |       2 |
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+
 
 
 
