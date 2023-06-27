@@ -33,7 +33,8 @@ mysql> desc jobs;
 | max_salary | int(11)     | YES  |     | NULL    |       |
 +------------+-------------+------+-----+---------+-------+
 4 rows in set (0.02 sec)
-create table department(employee_id int,first_name  varchar(20),last_name varchar(20),email varchar(20),phone bigint(10),hire_date date,job_id int,foreign key(job_id)references jobs(job_id),salary int,manager_id int,dept_id int,foreign key(dept_id) references departments(dept_id));
+create tabselect employee.first_name,employee.last_name,employee.dept_id,department.dept_name from employee emp join departments dep on emp.dept_id=dep.dept_id where emp.dept_id in(1,2,3) and emp.salary>1000;
+le department(employee_id int,first_name  varchar(20),last_name varchar(20),email varchar(20),phone bigint(10),hire_date date,job_id int,foreign key(job_id)references jobs(job_id),salary int,manager_id int,dept_id int,foreign key(dept_id) references departments(dept_id));
 Query OK, 0 rows affected (0.36 sec)
 mysql> desc department;
 +-------------+-------------+------+-----+---------+-------+
@@ -541,7 +542,8 @@ mysql> select * from dependants;
 +------------+-----------+------------------+
 
 
-
+//select employee.first_name,employee.last_name,employee.dept_id,department.dept_name from employee emp join departments dep on emp.dept_id=dep.dept_id where emp.dept_id in(1,2,3) and emp.salary>1000;
+//error
 
 
 
