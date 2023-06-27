@@ -472,4 +472,36 @@ mysql> select * from dependants;
 +--------------+------------+-----------+--------------+--------+
 3 rows in set (0.00 sec)
 
+-------------------------------questions and answers-------------------------------
+
+
+4)  mysql> select * from employee where salary>(select avg(salary) from employee);
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+| employee_id | first_name | last_name | email            | phone      | hire_date  | job_id | salary | manager_id | dept_id |
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+|           1 | abhinav    | k         | ab@gmial.com     | 8912345423 | 2022-03-05 |    106 |  50000 |       NULL |       1 |
+|           4 | nithya     | s         | nithya@gmial.com | 8912498423 | 2022-04-05 |    106 |  50000 |       NULL |       5 |
++-------------+------------+-----------+------------------+------------+------------+--------+--------+------------+---------+
+
+
+5)  mysql> select d.dept_id,dept_name from departments d where exists (select * from employee e where e.dept_id=d.dept_id and e.salary>10000);
++---------+------------------+
+| dept_id | dept_name        |
++---------+------------------+
+|       1 | computer science |
+|       2 | electronics      |
+|       5 | finance          |
++---------+------------------+
+
+6)  mysql> select d.dept_id,dept_name from departments d left join employee e on d.dept_id = e.dept_id and e.salary>10000 where e.employee_id isnull;
++---------+----------------+
+| dept_id | dept_name      |
++---------+----------------+
+|       3 | electronics    |
+|       4 | bio technology |
++---------+----------------+
+
+
+
+
 
